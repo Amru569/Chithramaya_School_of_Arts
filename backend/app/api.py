@@ -25,7 +25,7 @@ def login_staff(payload: schemas.AdminLoginRequest, response: Response, db: Sess
     if not user or not utils.verify_password(payload.password, user.password_hash):
         raise HTTPException(401, "Invalid username or password")
     token = auth.create_session(user.role, user.id)
-    response.set_cookie(SESSION_COOKIE_NAME, token, httponly=True, max_age=12 * 3600, samesite="lax")
+    response.set_cookie(SESSION_COOKIE_NAME, token, httponly=True, max_age=12 * 3600, samesite="none")
     return {"user": schemas.UserOut.model_validate(user)}
 
 
@@ -43,7 +43,7 @@ def login_student(payload: schemas.StudentLoginRequest, response: Response, db: 
     if not student:
         raise HTTPException(401, "Invalid mobile number or student code")
     token = auth.create_session("student", student.id)
-    response.set_cookie(SESSION_COOKIE_NAME, token, httponly=True, max_age=12 * 3600, samesite="lax")
+    response.set_cookie(SESSION_COOKIE_NAME, token, httponly=True, max_age=12 * 3600, samesite="none")
     return {"student": schemas.StudentOut.model_validate(student)}
 
 

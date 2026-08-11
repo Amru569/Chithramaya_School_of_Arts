@@ -5,11 +5,13 @@
  */
 import axios from "axios";
 
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "/api";
+
 const api = axios.create({
-  baseURL: "/api",
+  baseURL: API_BASE_URL,
   withCredentials: true,
 });
-
 // ---------- Public config (academy name + logo + about text) ----------
 export const getPublicConfig = () => api.get("/config").then((r) => r.data);
 

@@ -42,6 +42,9 @@ DEFAULT_ASSISTANT_USERNAME = "assistant"
 DEFAULT_ASSISTANT_PASSWORD = "assistant123"
 
 # CORS - Vite dev server
-FRONTEND_ORIGINS = ["http://localhost:5173", "http://127.0.0.1:5173"]
-
+FRONTEND_ORIGINS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "https://chithramaya-school-of-arts.vercel.app",
+]
 STUDENT_CODE_PREFIX = "CSA"
