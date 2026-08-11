@@ -117,3 +117,6 @@ This version is better for your GitHub repository because it tells someone **wha
 Available at your primary URL https://chithramaya-school-of-arts-1.onrender.com
 https://vercel.com/amru569s-projects/chithramaya-school-of-arts/3jW5c8o9zsf8LitXYbkugdVK9BjS
 https://chithramaya-school-of-arts.vercel.app/
+🤖 Android: Users can open Chithramaya in Chrome and choose Install app / Add to Home screen. It will appear as a normal app icon.
+🍎 iPhone: Users can open Chithramaya in Safari → Share → Add to Home Screen. Your Chithramaya icon will appear on the Home Screen.
+💻 Desktop: It can also be installed as a PWA in supported browsers.
