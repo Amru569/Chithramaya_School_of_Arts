@@ -1,0 +1,83 @@
+/* styles.css — global styling. Component-level layout is handled by MUI's
+   sx prop; this file covers resets, typography defaults, and a few
+   utility classes reused across pages. */
+
+:root {
+  --color-primary: #1651b6;
+  --color-primary-dark: #0d3a85;
+  --color-bg: #f6f8fc;
+  --color-border: #e3e9f2;
+  --color-text: #0d1b34;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", "Inter", sans-serif;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+/* Scrollbar - kept subtle, no unnecessary flourish */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #c6d2e6;
+  border-radius: 4px;
+}
+
+.page-title {
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+.section-gap {
+  margin-bottom: 1.5rem;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* Login screen background */
+.login-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #eaf0fc 0%, #f6f8fc 60%);
+  padding: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
