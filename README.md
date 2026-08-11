@@ -114,3 +114,4 @@ No open-source license is currently specified.
 
 
 This version is better for your GitHub repository because it tells someone **what Chithramaya does, what technologies it uses, how scheduling/attendance work, and what the deployment target is**, without turning the README into a long technical document.
+Available at your primary URL https://chithramaya-school-of-arts-1.onrender.com
