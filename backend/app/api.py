@@ -9,7 +9,7 @@ from fastapi import APIRouter, Depends, HTTPException, Response, UploadFile, Fil
 from sqlalchemy.orm import Session
 
 from app import models, schemas, services, utils, auth
-from app.config import SESSION_COOKIE_NAME
+from app.config import SESSION_COOKIE_NAME, SESSION_EXPIRE_HOURS, SESSION_COOKIE_SECURE, SESSION_COOKIE_SAMESITE
 from app.database.database import get_db
 
 router = APIRouter()
@@ -25,7 +25,10 @@ def login_staff(payload: schemas.AdminLoginRequest, response: Response, db: Sess
     if not user or not utils.verify_password(payload.password, user.password_hash):
         raise HTTPException(401, "Invalid username or password")
     token = auth.create_session(user.role, user.id)
-    response.set_cookie(SESSION_COOKIE_NAME, token, httponly=True, max_age=12 * 3600, samesite="none")
+    response.set_cookie(
+        SESSION_COOKIE_NAME, token, httponly=True, max_age=SESSION_EXPIRE_HOURS * 3600,
+        samesite=SESSION_COOKIE_SAMESITE, secure=SESSION_COOKIE_SECURE,
+    )
     return {"user": schemas.UserOut.model_validate(user)}
 
 
@@ -43,7 +46,10 @@ def login_student(payload: schemas.StudentLoginRequest, response: Response, db: 
     if not student:
         raise HTTPException(401, "Invalid mobile number or student code")
     token = auth.create_session("student", student.id)
-    response.set_cookie(SESSION_COOKIE_NAME, token, httponly=True, max_age=12 * 3600, samesite="none")
+    response.set_cookie(
+        SESSION_COOKIE_NAME, token, httponly=True, max_age=SESSION_EXPIRE_HOURS * 3600,
+        samesite=SESSION_COOKIE_SAMESITE, secure=SESSION_COOKIE_SECURE,
+    )
     return {"student": schemas.StudentOut.model_validate(student)}
 
 
@@ -79,7 +85,7 @@ def self_register_student(
 
 @router.post("/auth/logout")
 def logout(response: Response, session: dict = Depends(auth.get_current_session)):
-    response.delete_cookie(SESSION_COOKIE_NAME)
+    response.delete_cookie(SESSION_COOKIE_NAME, samesite=SESSION_COOKIE_SAMESITE, secure=SESSION_COOKIE_SECURE)
     return {"message": "Logged out"}
 
 

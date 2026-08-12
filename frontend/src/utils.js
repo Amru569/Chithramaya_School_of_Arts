@@ -2,6 +2,7 @@
  * utils.js
  * Small formatting/helper functions shared across pages.
  */
+import { API_ORIGIN } from "./services.js";
 
 export const ACADEMY_NAME = "Chithramaya School of Arts";
 
@@ -40,9 +41,13 @@ export function apiErrorMessage(err) {
   return err?.response?.data?.detail || err?.message || "Something went wrong";
 }
 
+/** Builds a URL for an uploaded file (student photo, fee receipt).
+ * Points at the backend's own origin — in production the backend
+ * (Render) is a different domain than the frontend (Vercel), so a bare
+ * "/uploads/..." path would incorrectly resolve against the frontend host. */
 export function uploadUrl(path) {
   if (!path) return null;
-  return `/uploads/${path}`;
+  return `${API_ORIGIN}/uploads/${path}`;
 }
 
 // Monday=0 ... Sunday=6, matching the backend's day_of_week convention

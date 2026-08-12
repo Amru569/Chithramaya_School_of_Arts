@@ -2,16 +2,26 @@
  * services.js
  * Every call to the FastAPI backend lives here. Uses a shared axios
  * instance with credentials so the session cookie is always sent.
+ *
+ * In local dev, VITE_API_URL is unset, so requests go to "/api" and
+ * Vite's dev-server proxy (vite.config.js) forwards them to the local
+ * backend — no setup needed. In production (Vercel), set VITE_API_URL
+ * to the deployed Render backend's URL (e.g.
+ * https://your-chithramaya-backend.onrender.com) and requests go
+ * straight there instead. See .env.example.
  */
 import axios from "axios";
 
-const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "/api";
+// The backend's own origin (no /api suffix) — also used to build URLs
+// for uploaded files (photos, receipts), which are served directly by
+// the backend, not proxied through the frontend host in production.
+export const API_ORIGIN = import.meta.env.VITE_API_URL || "";
 
 const api = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: `${API_ORIGIN}/api`,
   withCredentials: true,
 });
+
 // ---------- Public config (academy name + logo + about text) ----------
 export const getPublicConfig = () => api.get("/config").then((r) => r.data);
 

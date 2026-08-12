@@ -78,8 +78,8 @@ import {
   LoadingScreen,
   useToast,
 } from "./components.jsx";
-import { formatDate, formatDateTime, formatTime, formatCurrency, apiErrorMessage, todayISO, ACADEMY_NAME, DAY_NAMES, TIME_OPTIONS, CALENDAR_COLORS, currentBillingMonth, formatBillingMonth, recentBillingMonths, recentMonths, LEAVE_REASON_CATEGORIES } from "./utils.js";
-import logo from "./assets/logo.jpg";
+import { formatDate, formatDateTime, formatTime, formatCurrency, apiErrorMessage, todayISO, ACADEMY_NAME, DAY_NAMES, TIME_OPTIONS, CALENDAR_COLORS, currentBillingMonth, formatBillingMonth, recentBillingMonths, recentMonths, LEAVE_REASON_CATEGORIES, uploadUrl } from "./utils.js";
+import logo from "./assets/logo.png";
 
 /* ============================================================
    LOGIN PAGE
@@ -1060,7 +1060,7 @@ function StudentProfileDialog({ student, onClose, onPhotoUploaded }) {
       <DialogTitle>Student Profile</DialogTitle>
       <DialogContent>
         <Stack spacing={2} alignItems="center" sx={{ mt: 1 }}>
-          <Avatar src={student.photo_path ? `/uploads/${student.photo_path}` : undefined} sx={{ width: 88, height: 88, bgcolor: "#1651B6", fontSize: 32 }}>
+          <Avatar src={uploadUrl(student.photo_path)} sx={{ width: 88, height: 88, bgcolor: "#1651B6", fontSize: 32 }}>
             {student.name.charAt(0)}
           </Avatar>
           <Button component="label" size="small" disabled={uploading}>
@@ -1933,7 +1933,7 @@ function AdminFeesView() {
                       <TableCell><StatusChip status={f.status} /></TableCell>
                       <TableCell>
                         {f.receipt_path ? (
-                          <a href={`/uploads/${f.receipt_path}`} target="_blank" rel="noreferrer">View</a>
+                          <a href={uploadUrl(f.receipt_path)} target="_blank" rel="noreferrer">View</a>
                         ) : "-"}
                       </TableCell>
                       <TableCell align="right">

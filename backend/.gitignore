@@ -1,0 +1,28 @@
+# Environment / secrets — never commit these
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+venv/
+.venv/
+env/
+
+# Database (local dev only — production uses a managed DB or a
+# persistent disk, not a file that should live in git)
+*.db
+*.sqlite
+*.sqlite3
+
+# Uploaded files (photos, receipts) — user-generated content, not source
+uploads/students/
+uploads/receipts/
+
+# Editor/OS cruft
+.vscode/
+.idea/
+.DS_Store

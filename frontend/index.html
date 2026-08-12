@@ -1,66 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" >
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Chithramaya School of Arts</title>
+    <meta name="description" content="Chithramaya School of Arts — academy management for admins, teachers, and students." />
 
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    >
+    <!-- Favicon / desktop browser tab -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16.png" />
 
-    <!-- Chithramaya PWA -->
-    <meta name="theme-color" content="#ffffff" >
+    <!-- Android / general PWA (manifest + service worker are injected
+         automatically at build time by vite-plugin-pwa) -->
+    <meta name="theme-color" content="#1651B6" />
 
-    <meta
-      name="mobile-web-app-capable"
-      content="yes"
-    >
+    <!-- iOS home-screen install support — Safari doesn't read the web
+         manifest for these, so they're set explicitly here. -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Chithramaya" />
 
-    <meta
-      name="apple-mobile-web-app-capable"
-      content="yes"
-    >
-
-    <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="default"
-    >
-
-    <meta
-      name="apple-mobile-web-app-title"
-      content="Chithramaya"
-    >
-
-    <link
-      rel="apple-touch-icon"
-      href="/icons/apple-touch-icon.png"
-    >
-
-    <title>Chithramaya</title>
-
-    <link
-      rel="preconnect"
-      href="https://fonts.googleapis.com"
-    >
-
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    >
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
-    >
+    />
   </head>
-
   <body>
     <div id="root"></div>
-
-    <script
-      type="module"
-      src="/src/main.jsx"
-    ></script>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
